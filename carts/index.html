@@ -1,0 +1,77 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+    <title>购物车</title>
+
+    <link type="text/css" rel="stylesheet" href="assets/basic.css" />
+    <link type="text/css" rel="stylesheet" href="assets/carts.css"  />
+
+</head>
+
+<body>
+<div id="app">
+    <div class="header">
+        <h1>购物车</h1>
+        <a href="#" class="back">
+            <span></span>
+        </a>
+        <a href="#"></a>
+    </div>
+    <div class="shopping">
+        <div  class="shop-group-item">
+            <div class="shop-name">
+                <input type="checkbox" class="check goods-check shopCheck">
+                <h4><a href="#">xxx</a></h4>
+                <div class="coupons">
+                    <span>领券</span><em>|</em><span>编辑</span>
+                </div>
+            </div>
+            <ul>
+                <li>
+                    <div class="shop-info">
+                        <input type="checkbox"  class="check goods-check goodsCheck">
+                        <div class="shop-info-img">
+                            <a href="#">
+                                <img >
+                            </a>
+                        </div>
+                        <div class="shop-info-text">
+                            <h4>x</h4>
+                            <div class="shop-brief">
+                                <span>重量:x</span>
+                                <span>颜色:x</span>
+                                <span>版本:x</span>
+                            </div>
+                            <div class="shop-price">
+                                <div class="shop-pices">￥<b class="price">x</b>
+                                </div>
+                                <div class="shop-arithmetic">
+                                    <a class="minus" >-</a>
+                                    <span class="num">0</span>
+                                    <a class="plus">+</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <div class="shopPrice">本店总计：￥<span class="shop-total-amount ShopTotal">0</span>
+            </div>
+        </div>
+    </div>
+    <div class="payment-bar">
+        <div class="all-checkbox">
+            <input type="checkbox" class="check goods-check">全选
+        </div>
+        <div class="shop-total">
+            <strong>总价：<i id="AllTotal" class="total">0</i></strong>
+            <span>减免：100</span></div>
+        <a href="#" class="settlement">结算</a>
+    </div>
+</div>
+
+</body>
+</html>

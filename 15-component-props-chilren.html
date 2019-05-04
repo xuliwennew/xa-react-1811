@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=11,IE=10,IE=9,IE=8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    <title>react swiper</title>
+    <link rel="stylesheet" href="node_modules/swiper/dist/css/swiper.css">
+    <style>
+        .swiper-container {
+           width:100%;
+           height:300px;
+        }
+
+        .box1 {
+           background-color: red
+        }
+
+        .box2 {
+           background-color: green
+        }
+
+        .box3 {
+           background-color: blue
+        }
+    </style>
+</head>
+<body>
+
+<div id="app"></div>
+ 
+<script src="node_modules/swiper/dist/js/swiper.js"></script>
+<script src="bower_components/react/react.development.js"></script>
+<script src="bower_components/react/react-dom.development.js"></script>
+<script src="bower_components/react/babel-browser.js"></script>
+
+ 
+<script type="text/babel">
+    (function () {
+       
+       class ReactSwiper extends React.Component {
+
+         render() {
+           return (
+             //let sc = {}
+             <div className="swiper-container" ref="sc">
+                {
+                   this.props.children
+                }
+             </div>
+           )
+         }
+
+
+         componentDidMount() {
+            //ready onload refs
+            //refs vnode document.queyrSelector
+           let swiper = new Swiper(this.refs.sc,{
+              // effect:"cube"
+              // 如果需要分页器
+              pagination: {
+                el: '.swiper-pagination',
+              },
+           })
+            console.log(this.refs.sc) // document.querySelector("#sc")
+            
+         }
+         
+       }
+ 
+      let picArr = ["box1","box2","box3"]
+
+      let picSwiper = <div>
+           <ReactSwiper>
+               <div className="swiper-wrapper">
+                   {
+                      picArr.map((item,key)=>{
+                         return  <div className="swiper-slide box1" key={key}>{item}</div>
+                      })
+                   }
+                </div>
+                <div className="swiper-pagination"></div>
+           </ReactSwiper>
+      </div>
+
+       ReactDOM.render(picSwiper,document.querySelector("#app"))
+       
+    })()
+</script>
+   
+</body>
+</html>

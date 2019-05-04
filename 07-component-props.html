@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=11,IE=10,IE=9,IE=8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="app"></div>
+ 
+
+
+<script src="bower_components/react/react.development.js"></script>
+<script src="bower_components/react/react-dom.development.js"></script>
+<script src="bower_components/react/babel-browser.js"></script>
+
+<script src="node_modules/vue/dist/vue.js"></script>
+<script type="text/babel">
+    (function () {
+
+      let userArr = [
+          {name:"张三",profile:"zhngans xxxx"},
+          {name:"李四",profile:"李四 yyyyyyy"},
+          {name:"王五",profile:"王五 zzzzzzzz"}
+      ]  
+      
+      //输入的接口props 
+      function User(props) {
+          console.log(props)
+          return <li>
+              <h1>{props.name}</h1>
+          </li>
+      }
+
+      function UserList(props){
+          return <ul>
+              <h1>用户列表</h1>
+              {
+                  userArr.map((item,key)=>{
+                      return <User key={key} name={item.name}/>
+                  })
+              }
+          </ul>
+      }
+
+      class UserCard extends React.Component {
+
+            render(){
+                console.log(this.props)
+                let { name ,profile} = this.props
+                return <div>
+                   <h1>{name}</h1>
+                   <p>{profile}</p>
+                </div>
+            }
+      }
+
+      ReactDOM.render(<UserCard name="zhangsan" profile="zhangsan xxxxx"/>,document.querySelector("#app"))
+    
+    })()
+</script>
+   
+</body>
+</html>

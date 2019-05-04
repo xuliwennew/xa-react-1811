@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=11,IE=10,IE=9,IE=8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    <title>update view</title>
+</head>
+<body>
+
+<div id="app"></div>
+ 
+<script src="bower_components/react/react.development.js"></script>
+<script src="bower_components/react/react-dom.development.js"></script>
+<script src="bower_components/react/babel-browser.js"></script>
+
+<script src="node_modules/vue/dist/vue.js"></script>
+<script type="text/babel">
+    (function () {
+
+      class CounterContainer extends React.Component {
+          constructor(props) {
+            super(props)
+          
+            this.state = {
+                title:"counter-container"
+            };
+          };
+
+          updateTitle(){
+             this.setState({
+               title:"counter-container-new"
+             })
+          }
+
+          render() {
+            return (
+              <div>
+                  <Counter title={this.state.title} />
+                  <hr/>
+                  <button onClick={this.updateTitle.bind(this)}>更新title</button>
+              </div>
+            )
+          };
+          
+      }
+
+ 
+      class Counter extends React.Component {
+
+          constructor(props){
+              super(props)
+
+              this.state = {
+                  num:0
+              }
+
+              console.log("#1 constructor")
+          }
+
+          componentWillReceiveProps(){
+            console.log("#5-1 componentWillReceiveProps")
+          }
+
+          shouldComponentUpdate(nextProps, nextState){
+            console.log("#5 shouldComponentUpdate")
+              return true
+          };
+          
+          componentWillUpdate(){
+            console.log("#6 componentWillUpate")
+          }
+
+          update(){
+              let {num} = this.state;
+              //修改状态，当状态修改后，重新render 
+             this.setState({
+                 num:++num  
+             }) 
+            // console.log(num)
+            // this.state.num = 1111
+
+            // this.forceUpdate();
+
+            // console.log(this.state.num)
+          }
+
+          componentDidUpdate(){
+            console.log("#7 componentDidUpate")
+          }
+
+
+          componentWillMount(){
+            console.log("#2 componentWillMount")
+          }
+
+          unmount(){
+              //ReactDOM.render  
+              ReactDOM.unmountComponentAtNode(document.querySelector("#app"))
+          }
+
+          render(){
+              console.log("#3 render")
+              //diff -> patch -> compiler-> mounted
+               
+              return <div>
+                 <h1>{this.props.title}:{this.state.num}</h1>
+                 <button onClick={this.update.bind(this)}>+</button>
+                 <button onClick={this.unmount.bind(this)}>unmount</button>
+              </div>
+          }
+
+          componentDidMount() {
+            console.log("#4 componentDidMount")
+          }
+
+
+          
+      }
+
+
+      ReactDOM.render(<CounterContainer/>,document.querySelector("#app"))
+         
+    })()
+</script>
+   
+</body>
+</html>

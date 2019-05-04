@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=11,IE=10,IE=9,IE=8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    <title>update view</title>
+</head>
+<body>
+
+<div id="app"></div>
+ 
+
+
+<script src="bower_components/react/react.development.js"></script>
+<script src="bower_components/react/react-dom.development.js"></script>
+<script src="bower_components/react/babel-browser.js"></script>
+
+<script src="node_modules/vue/dist/vue.js"></script>
+<script type="text/babel">
+    (function () {
+
+// state class component 
+
+      class Person extends React.Component {
+          
+          constructor(props) {
+            super(props)
+          
+            //初始化组件的状态
+            this.state = {
+                title:"hello zhagan" // title 发生改变，ui render 
+            }
+          }
+          
+// state vue data -> 页面上的数据模型 
+          render(){
+              let { title} = this.state;
+              return <h1>{this.state.title}</h1>
+          }
+      }
+
+      class Counter extends React.Component {
+
+          constructor(props){
+              super(props)
+
+              this.state = {
+                  num:0
+              }
+          }
+
+          update(){
+              let {num} = this.state;
+              //修改状态，当状态修改后，重新render 
+            //  this.setState({
+            //      num:++num  
+            //  }) 
+            console.log(num)
+            this.state.num = 1111
+
+            this.forceUpdate();
+
+            console.log(this.state.num)
+          }
+
+          render(){
+              //diff -> patch -> compiler-> mounted
+              console.log("render....")
+              return <div>
+                 <h1>{this.state.num}</h1>
+                 <button onClick={this.update.bind(this)}>+</button>
+              </div>
+          }
+      }
+
+
+      ReactDOM.render(<Counter/>,document.querySelector("#app"))
+         
+    })()
+</script>
+   
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=11,IE=10,IE=9,IE=8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="app"></div>
+
+
+
+<script src="bower_components/react/react.development.js"></script>
+<script src="bower_components/react/react-dom.development.js"></script>
+<script src="bower_components/react/babel-browser.js"></script>
+
+<script src="node_modules/vue/dist/vue.js"></script>
+<script type="text/babel">
+    (function () {
+     
+     // 1.react element 2.component
+     // 2.挂载位置 document.querySelector("#app")
+
+     let mydiv = <h1>hello world</h1>
+
+     //react 组件就是一个function 
+     function Hello(){
+         return "hello world component"
+     }
+
+// 组件的两个条件： 1.有view 2.使用标签的方式进行组件的申明 <Hello />
+     ReactDOM.render(<Hello></Hello>,document.querySelector("#app"))
+
+    })()
+</script>
+
+</body>
+</html>
