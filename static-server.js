@@ -6,7 +6,7 @@ app.use(express.static(__dirname))
 
 //restful nodejs
 app.use("/api/carts",(req,res)=>{
-    res.json(require("./carts/data/ShopCartsInfo"))
+    res.json(require("./mocks/ShopCartsInfo"))
 })
 
 app.use("/",(req,res)=>{
@@ -14,6 +14,6 @@ app.use("/",(req,res)=>{
 })
 
 
-app.listen(3001,()=>{
-    console.log("server is ready on port 3001")
+app.listen(3000,()=>{
+    console.log("server is ready on port 3000")
 })

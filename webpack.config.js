@@ -3,11 +3,11 @@ const path = require("path")
 module.exports = {
 
     entry:{
-        app:path.resolve(__dirname,"carts/main.js")
+        app:path.resolve(__dirname,"react-carts/src/main.js")
     },
     output:{
         filename:"[name].bundle.js",
-        path:path.resolve(__dirname,"carts")
+        path:path.resolve(__dirname,"react-carts/dist")
     },
     resolve:{
         extensions:[".css",".js",".jsx"]

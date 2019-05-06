@@ -1,0 +1,17 @@
+React vs Vue
+
+Vue2x = angularjs1x + react
+
+React library
+全家桶 : react + react-router + redux + fetch/axios
+        elementui/antdesign
+
+
+
+react component
+1.创建一个react component
+es6 class / functional component
+render
+state
+props
+refs
