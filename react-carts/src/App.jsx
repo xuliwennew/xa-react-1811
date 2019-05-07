@@ -12,11 +12,11 @@ export default  class App extends Component {
     render() {
         return (
             <BrowserRouter>
-                <Link to={"/cart"}>cart</Link> || <Link to={"/product"}>product</Link>
+                <Link to={"/cart"}>cart</Link> || <Link to={"/product/1/apple"}>product</Link>
                 <hr/>
                 <Route path={"/"} exact render={(props)=><Redirect to={"/cart"} />} />
                 <Route path="/cart" component={JdCarts}/>
-                <Route path={"/product"} component={JdProduct}/>
+                <Route path={"/product/:id"} component={JdProduct}/>
             </BrowserRouter>
         );
     }
