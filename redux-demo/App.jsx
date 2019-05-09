@@ -3,7 +3,7 @@ import CounterContainer from "./pages/Counter"
 import CounterNewContainer from "./pages/CounterNew";
 import DaPaidang from "./pages/DaPaidang"
 import {Provider} from "react-redux"
-import store from "./store"
+import store from "./store/index"
 
 export default class App extends Component {
     constructor(props) {
@@ -17,10 +17,10 @@ export default class App extends Component {
             <Provider store={store}>
                 <div>
                     <CounterContainer/>
-                    <hr/>
-                    <CounterNewContainer/>
-                    <hr/>
-                    <DaPaidang/>
+                    {/*<hr/>*/}
+                    {/*<CounterNewContainer/>*/}
+                    {/*<hr/>*/}
+                    {/*<DaPaidang/>*/}
                 </div>
             </Provider>
         );

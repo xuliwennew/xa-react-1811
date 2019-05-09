@@ -3,8 +3,10 @@ import JdCartFooter from "../components/carts/jd-cart-footer"
 import JdCartHeader from "../components/carts/jd-cart-header"
 import JdCartShopList from "../components/carts/jd-cart-shop-list"
 import CartApi from "../apis/CartApi"
+import {connect} from "react-redux"
+import store from "../store"
 
-export default  class JdCarts extends Component {
+export default class JdCarts extends Component {
     constructor(props) {
         super(props);
 
@@ -17,14 +19,53 @@ export default  class JdCarts extends Component {
             cartInfo:{}
         }
 
-        //获取数据结构
-        CartApi.getCartInfoByUserId(data=>{
-            console.log(data)
+        //初始化store
+        // this.props.init()
+        store.dispatch({type:"ICART"})
+
+        // console.log(this.props.cartInfo)
+        //
+        // // //获取数据结构
+        // CartApi.getCartInfoByUserId(data=>{
+        //     console.log(data)
+        //     this.setState({
+        //         cartInfo:data
+        //     })
+        // })
+    }
+
+    componentDidUpdate(){
+        console.log(this.props)
+       // this.setState({
+       //      cartInfo:this.props.cartInfo
+       // })
+    }
+
+    componentDidMount(){
+        store.subscribe(()=>{
+            console.log(store.getState())
             this.setState({
-                cartInfo:data
+                cartInfo:store.getState().cartInfo
             })
         })
     }
+
+    componentWillMount(){
+        console.log(this.props)
+    }
+
+    componentWillUpdate(){
+        console.log(this.props)
+    }
+
+    //props
+    componentWillReceiveProps(){
+        console.log("componentWillReceiveProps")
+        console.log(this.props)
+    }
+
+
+
 
     /**
      * 单选
@@ -122,6 +163,8 @@ export default  class JdCarts extends Component {
     }
 
     render() {
+        console.log(this.props)
+
         return (
             <Fragment>
                <JdCartHeader/>
@@ -132,3 +175,23 @@ export default  class JdCarts extends Component {
     }
 
 }
+
+// //update render
+// let mapStateToProps = (state)=>{
+//     return {
+//         cartInfo:state.cartInfo
+//     }
+// }
+//
+// let mapDispathToProps = (dispatch)=>{
+//     return {
+//         init:()=>{
+//             dispatch({type:"ICART"})
+//         }
+//     }
+// }
+//
+// let JdCartsContainer = connect(mapStateToProps,mapDispathToProps)(JdCarts)
+//
+//
+// export default JdCartsContainer

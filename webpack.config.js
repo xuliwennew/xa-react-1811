@@ -1,12 +1,14 @@
 const path = require("path")
 
+
 module.exports = {
 
-    entry:{
-        app:path.resolve(__dirname,"redux-demo/main.js")
-    },
+    entry:[
+        "@babel/polyfill",
+        path.resolve(__dirname,"redux-demo/main.js")
+    ],
     output:{
-        filename:"[name].bundle.js",
+        filename:"app.bundle.js",
         path:path.resolve(__dirname,"redux-demo")
     },
     resolve:{

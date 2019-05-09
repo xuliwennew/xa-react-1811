@@ -1,6 +1,6 @@
 import {createStore,applyMiddleware} from "redux"
-
-
+import createSagaMiddleware from "redux-saga"
+import rootSaga from "./sagas/rootSaga"
 
 //1 .创建一个公共的仓库 store
 // store :1 保存状态 2 修改状态规则
@@ -20,7 +20,7 @@ let reducers = (state,action)=>{
     let { num } = state;
     switch (action.type) {
         case "eggRice":
-            //
+            //返回的是一个新的状态
             console.log("有人要吃 鸡蛋 炒饭,尽快做好端上去...")
             return { food: state.rice + state.egg  }
             break;
@@ -28,7 +28,8 @@ let reducers = (state,action)=>{
         case "haishenRice":
             return { food:state.seafood + state.rice}
             break;
-        case "ADD":
+        case "INC":
+            console.log("saga put ")
             return {num:++num}
             break;
         case "CART":
@@ -59,7 +60,10 @@ let serviceMiddleWare = store=>next=>action=>{
 
 }
 
+//通过createSagaMiddleware生成一个中间伯的实例
+let sagaMiddleware = createSagaMiddleware()
 
-let store = createStore(reducers,initialState,applyMiddleware(logerMiddleWare,serviceMiddleWare))
+let store = createStore(reducers,initialState,applyMiddleware(sagaMiddleware))
 
+sagaMiddleware.run(rootSaga)
 export default  store

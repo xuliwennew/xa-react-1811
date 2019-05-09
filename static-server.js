@@ -6,7 +6,7 @@ app.use(express.static(__dirname))
 
 //restful nodejs
 app.use("/api/carts",(req,res)=>{
-    res.header('Access-Control-Allow-Origin', 'http://localhost:8082');
+    res.header('Access-Control-Allow-Origin', '*');
     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
     res.header('Access-Control-Allow-Headers', 'Content-Type');
     res.header('Access-Control-Allow-Credentials','true');

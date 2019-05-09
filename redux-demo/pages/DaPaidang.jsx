@@ -1,5 +1,5 @@
 import React,{Component} from "react"
-import store from "../store"
+import store from "../store/index"
 
 export default class DaPaidang extends Component {
     constructor(props) {
